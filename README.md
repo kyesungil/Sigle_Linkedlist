@@ -176,7 +176,7 @@ int list_rem_next(List* list, ListElmt* element, void** data)
 }
 
 ```  
-### 3-4. - 리스트에 있는 모든데이터 삭제함수: list_destroy(List *list)  
+### 3-4. 리스트에 있는 모든데이터 삭제함수: list_destroy(List *list)  
 - 구현
   1. return 없음  
   2. struct List에 함수포인터 즉,void(*destroy)(void* data)에 data을 제거할수 있는 함수를 만들어야함(본인이 만든 data구조에 따라서).  

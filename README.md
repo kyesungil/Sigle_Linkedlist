@@ -11,7 +11,7 @@
   1. _head pointer_: 첫 노드의 주소 저장  
   2. _tail pointer_: 마지막 노드의 주소 저장  
   3. 리스트의 마지막 노드의 next값은 NULL로 지정(마지막 노드 체크을 위해서)  
-  #### code  
+#### code  
 
 ```c
 typedef struct List_

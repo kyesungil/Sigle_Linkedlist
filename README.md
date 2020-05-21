@@ -132,7 +132,8 @@ int list_ins_next(List* list, ListElmt* element, const void* data)
   3. 순서  
     [1] 삭제할 element의 data 보관  
     [2] element의 next 지정  
-    [3] 삭제 element의 메모리 해제
+    [3] 삭제 element의 메모리 해제  
+    ※ (old_element는 삭제할 노드이다.)  
 #### 1) 중간에 데이터를 삭제할 때  
 ![removal](https://user-images.githubusercontent.com/41607872/82539931-388fe280-9b89-11ea-9844-487dee998806.jpg)  
     

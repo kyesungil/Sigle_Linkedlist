@@ -120,7 +120,7 @@ int list_ins_next(List* list, ListElmt* element, const void* data)
 	return 0;
 }  
 ```  
-#### 3-3. 데이터를 linked list에서 삭제하는 함수: list_rem_next(List* list, ListElmt* element, void** data)  
+### 3-3. 데이터를 linked list에서 삭제하는 함수: list_rem_next(List* list, ListElmt* element, void** data)  
 - parmamter
   1. _List *list:_ list 정보
   2. _ListElmt* element:_ 삭제할 위치의 전 위치(주소)
@@ -132,7 +132,10 @@ int list_ins_next(List* list, ListElmt* element, const void* data)
   3. 순서  
     [1] 삭제할 element의 data 보관  
     [2] element의 next 지정  
-    [3] 삭제 element의 메모리 해제  
+    [3] 삭제 element의 메모리 해제
+#### 1) 중간에 데이터를 삭제할 때  
+![removal](https://user-images.githubusercontent.com/41607872/82539931-388fe280-9b89-11ea-9844-487dee998806.jpg)  
+    
 #### code  
 
 ```c
@@ -172,7 +175,7 @@ int list_rem_next(List* list, ListElmt* element, void** data)
 }
 
 ```  
-#### 3-4. - 리스트에 있는 모든데이터 삭제함수: list_destroy(List *list)  
+### 3-4. - 리스트에 있는 모든데이터 삭제함수: list_destroy(List *list)  
 - 구현
   1. return 없음  
   2. struct List에 함수포인터 즉,void(*destroy)(void* data)에 data을 제거할수 있는 함수를 만들어야함(본인이 만든 data구조에 따라서).  
@@ -198,4 +201,8 @@ void my_free(void* data) // data 제거함수
 	return;
 }  
 ```  
-#### 
+#### 저장된 데이터를 화면에 출력:  display_list(List* list)함수 - 코드파일 참조
+#### 오름차순 데이터 넣기: list_sorted_insert(List* list, device* dev_data) - 코드파일 참조
+#### 오름차순으로 데이터 정렬: list_sorted(List* list, device* tmp_data) - 코드파일 참조  
+[강릉원주대 박래정교수님 수업 참조]  
+

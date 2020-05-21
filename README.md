@@ -1,0 +1,65 @@
+# Sigle_Linked list
+## 1. Linked list 구성
+- __데이터들을 연결선을 통해서 연결된 자료들__
+
+
+![Linkedlist](https://user-images.githubusercontent.com/41607872/82530263-e85c5480-9b77-11ea-8b35-fdbc7041574e.jpg)
+
+
+- __그림상의 네모를 노드라 할때, 각 노드의 주소는 각 노드의 전노드 공간에 next 포인터에 저장된다.__
+- __각 노드가 메모리에 여기저기 흩어져 있기 때문에 리스트의 첫 노드(elemnet)주소를 기억해야한다.__  
+  1. _head pointer_: 첫 노드의 주소 저장  
+  2. _tail pointer_: 마지막 노드의 주소 저장  
+  3. 리스트의 마지막 노드의 next값은 NULL로 지정(마지막 노드 체크을 위해서)  
+```c
+typedef struct List_
+{
+	int       size;  // 데이터 개수
+	ListElmt* head;
+	ListElmt* tail;
+
+	int	(*match)(const void* key1, const void* key2);
+	void    (*destroy)(void* data); // 할당 메모리 해제를 위한 함수 포인터
+}List;
+```
+***  
+## 2. 노드(또는 element)의 구성(ListElmt)  
+- __데이터 포인터(void* data):__  저장할 데이터의 주소를 가진다.  
+  _자료형 void*인 이유는? 테이터의 타입이 정해져 있지 않기 때문이다. 예로 학생데이터 또는 로봇데이터가 저장되있을 수 있다. 그래서 나중에 캐스팅해준다._
+- __next 포인터(ListElmt* next):__  뒤에 나오는 노드의 주소를 저장, 즉 연결선  
+```c
+typedef struct ListElmt_
+{
+	void*  data;
+	struct ListElmt_* next;
+
+}ListElmt;
+```
+***
+## 3. Linled list 인터페이스 함수
+### 3-1. Linked lsit 초기화 함수: list_init(List* list, void(*destroy)(void* data))  
+- list(Linked list 전체)의 linked list를 초기화. 리스트를 사용하기 전에 항상 제일 먼저 호출되어야 한다. destroy는 data에 동적 할당된 메모리를 해제하기 위해 호출되는 함수의 포인터. 
+특별히 할당된 메모리 해제가 필요 없으면 NULL로 지정한다.  
+- head와 tail은 NULL 값으로 지정, list의 size 즉, 데이터의 개수 0으로 지정  
+```c
+void list_init(List* list, void(*destroy)(void* data))
+{
+	list->size = 0; // 데이터 개수
+	list->destroy = destroy;
+	list->head = NULL;
+	list->tail = NULL;
+}
+```
+### 3-2. 데이터를 Linked list에 끼워넣는 함수: list_ins_next(List *list, ListElmt *element, const void *data)  
+- Parmameter
+  1. _List *list:_  list 정보.
+  2. _ListElmt* element:_  넣고싶은 위치의 전 위치(주소).
+  3. _const void *data:_  date주소 값.
+- 구현
+  1. 성공하면 return 0, 실패하면 return -1.
+  2. element의 바로 뒤에 끼워 넣기. 만약 element가 NULL인 경우에는 list의 head에 끼워 넣는다.
+  3. 순서  
+    [1] new_element 메모리 할당  
+    [2] new_element->data에 데이터 연결  
+    [3] new_element->next 지정  
+    [4] element-> next 지정  

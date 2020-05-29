@@ -123,7 +123,7 @@ int list_ins_next(List* list, ListElmt* element, const void* data)
 ### 3-3. 데이터를 linked list에서 삭제하는 함수: list_rem_next(List* list, ListElmt* element, void** data)  
 - parmamter
   1. _List *list:_ list 정보
-  2. _ListElmt* element:_ 삭제할 위치의 전 위치(주소)
+  2. _ListElmt* element:_ 삭제할 노드의 전 노드(주소)
   3. _void **data:_ 삭제할 data을 담기위한 매개변수
   ※ (data안에 연속적으로 동적할당 될 경우때문에 함수 자체 내에서 free하지 않는다.)  
 - 구현  

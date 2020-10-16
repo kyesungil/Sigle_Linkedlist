@@ -1,4 +1,5 @@
-# Sigle_Linked list
+[강릉원주대 박래정교수님 수업 참조]  
+# Sigle_Linked list  
 ## 1. Linked list 구성
 - __데이터들을 연결선을 통해서 연결된 자료들__
 
